@@ -1,0 +1,11 @@
+giver_username_if_known: will be ignored for now since its post result data.
+    also, it is in format N/A rather than None
+    hahaha! the test data contains this info which should correlate 100% with recieving pizza
+
+..._at_retrieval: data is also not relavent and will be pruned
+
+requester_user_flair: data dropped since it contains answer
+    just realized these arent in test anyways so dropping from train
+
+post_was_edited: is dumb and not in test data anyway (you can see if they got pizza by whethe or not it is edited with no change to text)
+    I'm making my own actually bool variable by comparing 
