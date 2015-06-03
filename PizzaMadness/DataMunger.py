@@ -16,7 +16,12 @@ def getTestData():
 
 def getNumericTraining(df=getTrainingData()):
     #df = getTrainingData()
-    numdf = df.drop([u'request_id', u'request_text_edit_aware', u'request_title', u'requester_subreddits_at_request', u'requester_username'],axis=1)
+    #numdf = df.drop([u'request_id', u'request_text_edit_aware', u'request_title', u'requester_subreddits_at_request', u'requester_username'],axis=1)
+    numdf = df
+    dropList = [u'total_text',u'request_id', u'request_text_edit_aware', u'request_title', u'requester_subreddits_at_request', u'requester_username',u'giver_username_if_known']
+    for item in dropList:
+        if item in numdf:
+            numdf.drop(item,axis=1,inplace=True)
     cols = list(numdf)
     cols.insert(0, cols.pop(cols.index('requester_received_pizza')))
     numdf = numdf.ix[:, cols]
@@ -30,7 +35,12 @@ def getNumericTraining(df=getTrainingData()):
 
 def getNumericTest(testdf=getTestData()):
     #testdf = getTestData()
-    numdfTest = testdf.drop([u'giver_username_if_known', u'request_id', u'request_text_edit_aware', u'request_title', u'requester_subreddits_at_request', u'requester_username'],axis=1)
+    #numdfTest = testdf.drop([u'giver_username_if_known', u'request_id', u'request_text_edit_aware', u'request_title', u'requester_subreddits_at_request', u'requester_username'],axis=1)
+    numdfTest = testdf
+    dropList = [u'total_text',u'request_id', u'request_text_edit_aware', u'request_title', u'requester_subreddits_at_request', u'requester_username',u'giver_username_if_known']
+    for item in dropList:
+        if item in numdfTest:
+            numdfTest.drop(item,axis=1,inplace=True)
 #    cols = numdfTest.columns.tolist()
 #    cols = cols[-4:] + cols[:-4]
 #    numdfTest = numdfTest[cols]
